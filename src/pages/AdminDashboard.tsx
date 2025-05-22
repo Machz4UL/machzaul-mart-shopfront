@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { getProducts, setProducts } from "@/lib/local-storage";
 import { Product } from "@/types";
 import { Button } from "@/components/ui/button";
@@ -14,7 +15,7 @@ import {
   DialogFooter 
 } from "@/components/ui/dialog";
 import { toast } from "sonner";
-import { Trash, PencilIcon, PackagePlus } from "lucide-react";
+import { Trash, PencilIcon, PackagePlus, ClipboardList } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
 
 const AdminDashboard = () => {
@@ -162,15 +163,26 @@ const AdminDashboard = () => {
 
   return (
     <div className="animate-fade-in">
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
         <h1 className="text-3xl font-bold">Admin Dashboard</h1>
-        <Button
-          onClick={handleAddProduct}
-          className="bg-brand-purple hover:bg-brand-purple-dark"
-        >
-          <PackagePlus className="mr-2" size={18} />
-          Add Product
-        </Button>
+        <div className="flex gap-4">
+          <Button
+            asChild
+            variant="outline"
+          >
+            <Link to="/admin/orders">
+              <ClipboardList className="mr-2" size={18} />
+              Manage Orders
+            </Link>
+          </Button>
+          <Button
+            onClick={handleAddProduct}
+            className="bg-brand-purple hover:bg-brand-purple-dark"
+          >
+            <PackagePlus className="mr-2" size={18} />
+            Add Product
+          </Button>
+        </div>
       </div>
 
       {loading ? (

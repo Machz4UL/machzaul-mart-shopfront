@@ -1,5 +1,5 @@
 
-import { Product, CartItem } from '@/types';
+import { Product, CartItem, Order } from '@/types';
 
 // Local storage keys
 export const PRODUCTS_STORAGE_KEY = 'machzaulmart_products';
@@ -122,23 +122,36 @@ export function clearCart(): void {
 }
 
 // Order functions
-export function getOrders() {
+export function getOrders(): Order[] {
   const orders = localStorage.getItem(ORDERS_STORAGE_KEY);
   return orders ? JSON.parse(orders) : [];
 }
 
-export function setOrders(orders: any[]) {
+export function setOrders(orders: Order[]): void {
   localStorage.setItem(ORDERS_STORAGE_KEY, JSON.stringify(orders));
 }
 
-export function addOrder(order: any) {
+export function addOrder(order: Order): Order {
   const orders = getOrders();
   orders.push(order);
   setOrders(orders);
   return order;
 }
 
-export function getOrderById(id: string) {
+export function getOrderById(id: string): Order | undefined {
   const orders = getOrders();
-  return orders.find((order: any) => order.id === id);
+  return orders.find((order: Order) => order.id === id);
+}
+
+export function updateOrderStatus(orderId: string, status: string): Order | undefined {
+  const orders = getOrders();
+  const orderIndex = orders.findIndex(order => order.id === orderId);
+  
+  if (orderIndex >= 0) {
+    orders[orderIndex].status = status;
+    setOrders(orders);
+    return orders[orderIndex];
+  }
+  
+  return undefined;
 }

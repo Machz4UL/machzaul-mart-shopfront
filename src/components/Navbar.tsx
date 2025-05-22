@@ -38,12 +38,20 @@ const Navbar = () => {
           <Link to="/" className="text-white hover:text-brand-purple-light">
             Products
           </Link>
+          <Link to="/about" className="text-white hover:text-brand-purple-light">
+            About
+          </Link>
+          <Link to="/contact" className="text-white hover:text-brand-purple-light">
+            Contact
+          </Link>
           <Link to="/tracking" className="text-white hover:text-brand-purple-light">
             Track Order
           </Link>
-          <Link to="/admin" className="text-white hover:text-brand-purple-light">
-            Admin
-          </Link>
+          <div className="hidden md:block">
+            <Link to="/admin" className="text-white hover:text-brand-purple-light">
+              Admin
+            </Link>
+          </div>
           <Link to="/cart" className="relative">
             <Button variant="ghost" className="text-white p-2">
               <ShoppingCart size={22} />

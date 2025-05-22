@@ -11,6 +11,9 @@ import CheckoutPage from "./pages/CheckoutPage";
 import OrderConfirmation from "./pages/OrderConfirmation";
 import OrderTracking from "./pages/OrderTracking";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminOrdersPage from "./pages/AdminOrdersPage";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,7 +29,10 @@ const router = createBrowserRouter([
       { path: "checkout", element: <CheckoutPage /> },
       { path: "order-confirmation/:orderId", element: <OrderConfirmation /> },
       { path: "tracking", element: <OrderTracking /> },
+      { path: "about", element: <AboutPage /> },
+      { path: "contact", element: <ContactPage /> },
       { path: "admin", element: <AdminDashboard /> },
+      { path: "admin/orders", element: <AdminOrdersPage /> },
       { path: "*", element: <NotFound /> }
     ]
   }
