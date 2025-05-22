@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getCart, clearCart, addOrder } from "@/lib/local-storage";
-import { CartItem, CustomerInfo } from "@/types";
+import { CartItem, CustomerInfo, OrderStatus } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -73,7 +73,7 @@ const CheckoutPage = () => {
         customer: customerInfo,
         items: cartItems,
         total: calculateTotal(),
-        status: "Pending",
+        status: "Pending" as OrderStatus,
         date: new Date().toISOString(),
       };
 

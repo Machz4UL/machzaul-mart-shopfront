@@ -13,6 +13,8 @@ export interface CartItem {
   quantity: number;
 }
 
+export type OrderStatus = 'Pending' | 'Processing' | 'Shipped' | 'Delivered';
+
 export interface Order {
   id: string;
   customer: CustomerInfo;
@@ -28,5 +30,3 @@ export interface CustomerInfo {
   address: string;
   phone: string;
 }
-
-export type OrderStatus = 'Pending' | 'Processing' | 'Shipped' | 'Delivered';

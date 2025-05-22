@@ -52,6 +52,11 @@ const Navbar = () => {
               Admin
             </Link>
           </div>
+          <div className="hidden md:block">
+            <Link to="/admin/orders" className="text-white hover:text-brand-purple-light">
+              Orders
+            </Link>
+          </div>
           <Link to="/cart" className="relative">
             <Button variant="ghost" className="text-white p-2">
               <ShoppingCart size={22} />
